@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="Input\InputControl.fs" />
+    <Compile Include="Drawing\Interfaces.fs" />
+    <Compile Include="Drawing\Point.fs" />
+    <Compile Include="Drawing\EmptyMatrix.fs" />
+    <Compile Include="Drawing\PixelMap.fs" />
+    <Compile Include="Drawing\Primitives.fs" />
+    <Compile Include="Window\Window.fs" />
+    <Compile Include="Program.fs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="OpenTK.NetStandard" Version="1.0.5.32" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Update="FSharp.Core" Version="5.0.1" />
+  </ItemGroup>
+
+</Project>
