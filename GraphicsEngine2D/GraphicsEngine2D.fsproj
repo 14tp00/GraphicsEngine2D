@@ -1,11 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="Ballistics\Node.fs" />
+    <Compile Include="Ballistics\Plate.fs" />
     <Compile Include="Input\InputControl.fs" />
     <Compile Include="Drawing\Interfaces.fs" />
     <Compile Include="Drawing\Point.fs" />

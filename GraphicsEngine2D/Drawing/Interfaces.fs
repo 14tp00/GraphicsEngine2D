@@ -7,10 +7,12 @@ open System.Runtime.CompilerServices
 type Point = {
     mutable x: float32;
     mutable y: float32;
+    
     mutable r: byte;
     mutable g: byte;
     mutable b: byte;
     mutable a: byte
+
 }
 
 type IDisplayMatrix =
@@ -29,3 +31,4 @@ type IPixelMap =
     abstract member SetA : int -> int -> byte -> unit
     abstract member SetColor : int -> int -> Color -> unit
     abstract member GetPoint : int -> int -> Point
+    abstract member Clear : unit -> unit

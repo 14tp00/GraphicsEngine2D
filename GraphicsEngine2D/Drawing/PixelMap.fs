@@ -8,8 +8,8 @@ open System.Runtime.InteropServices
 let mutable counter = 0
 
 type PixelMap (width, height, initC : Color) =
-    let ps = Array2D.init width height (fun x y -> 
-        {x = float32 x; y = float32 y; r = initC.R; g = initC.G; b = initC.B; a = initC.A})
+    let mutable ps = Array2D.init width height (fun x y -> 
+        {x = float32 x; y = float32 y; a = initC.A; r = initC.R; g = initC.G; b = initC.B})
     let pMatrix = (0.0, float width, float height, 0.0, 0.0, 1.0)
     
     interface IPixelMap with
@@ -43,6 +43,8 @@ type PixelMap (width, height, initC : Color) =
             GL.ColorPointer (4, ColorPointerType.UnsignedByte, sizeof<Point>, clrs)
             GL.PointSize 1.0f
             let l = width * height * 3 / 2 // TODO The hell is wrong with it?
+            GL.Enable EnableCap.ProgramPointSize 
+            GL.PointSize 1f
             GL.DrawArrays (PrimitiveType.Points, 0, l)
             GL.DisableClientState ArrayCap.VertexArray
             GL.DisableClientState ArrayCap.ColorArray
@@ -60,3 +62,6 @@ type PixelMap (width, height, initC : Color) =
         member __.SetR x y r = 
             ps.[x,y].r <- r
         member __.Width: int = width
+        member __.Clear () =
+            ps <- Array2D.init width height (fun x y -> 
+                {x = float32 x; y = float32 y; a = initC.A; r = initC.R; g = initC.G; b = initC.B})
